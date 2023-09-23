@@ -1,0 +1,32 @@
+[
+    {
+        "model": "image.userlevel",
+        "pk": 1,
+        "fields": {
+            "name": "Basic",
+            "exp_link": false,
+            "org_link": false,
+            "size": [1]
+        }
+    },
+    {
+        "model": "image.userlevel",
+        "pk": 2,
+        "fields": {
+            "name": "Premium",
+            "exp_link": false,
+            "org_link": true,
+            "size": [1, 2]
+        }
+    },
+    {
+        "model": "image.userlevel",
+        "pk": 3,
+        "fields": {
+            "name": "Enterprise",
+            "exp_link": true,
+            "org_link": true,
+            "size": [1, 2]
+        }
+    }
+]

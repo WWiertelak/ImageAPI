@@ -1,0 +1,16 @@
+[
+    {
+        "model": "image.imagesize",
+        "pk": 1,
+        "fields": {
+            "height": 200
+        }
+    },
+    {
+        "model": "image.imagesize",
+        "pk": 2,
+        "fields": {
+            "height": 400
+        }
+    }
+]

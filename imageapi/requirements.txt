@@ -1,0 +1,15 @@
+Django==3.2.10
+django-extensions==2.2.8
+django-redis==4.5.0
+djangorestframework==3.14.0
+python-json-logger==2.0.2
+django-filter==2.4.0
+celery==4.4.6
+django-import-export==2.8.0
+django-grappelli==3.0.3
+SQLAlchemy==2.0.1
+PyMySQL==1.0.2
+djangoql==0.17.1
+Pillow==8.3.1
+ipython==7.13.0
+django_celery_results==2.0.0

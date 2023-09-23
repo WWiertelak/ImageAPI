@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - rabbitmq
+
+  rabbitmq:
+    image: "rabbitmq:3.8-management"
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  celery:
+    build: .
+    command: celery -A imageapi worker --loglevel=info
+    volumes:
+      - .:/app
+    depends_on:
+      - rabbitmq
+
+  celerybeat:
+    build: .
+    command: celery -A imageapi beat -l info
+    volumes:
+      - .:/app
+    depends_on:
+      - rabbitmq
