@@ -25,8 +25,8 @@ class Image(models.Model):
 class UserLevel(models.Model):
     name = models.CharField(max_length=25)
     size = models.ManyToManyField('ImageSize')
-    exp_link = models.BooleanField(default=False)
-    org_link = models.BooleanField(default=False)
+    exp_link = models.BooleanField(default=False, verbose_name='Expiring link')
+    org_link = models.BooleanField(default=False, verbose_name='Original link')
 
     def __str__(self):
         return str(self.name)
