@@ -1,17 +1,18 @@
 # ImageAPI Project
 
 ## Description
-ImageAPI is a Django-based application for managing and sharing images. Users can upload images, generate expiring links for them, and browse available images.
+ImageAPI is a Django-driven platform designed to facilitate efficient management and sharing of images. With capabilities such as secure image uploads, expiring link generation, and efficient browsing of existing images.
 
 ## Features
+**Secure Image Uploads:** Allows authenticated users to securely upload their images onto the platform.
 
-- Image uploads by authenticated users.
-- Generation of expiring links for images.
-- Browsing of available images.
-- Celery tasks for:
-  - Generating and storing thumbnails based on user levels.
-  - Removing old thumbnails that haven't been accessed in the last 30 days.
-  - Deleting expired image links.
+**Thumbnail Generation:** Dynamically creates optimized thumbnails of uploaded images, tailored to user levels, enhancing the browsing experience and conserving bandwidth.
+
+**Expiring Links:** Facilitates the creation of expiring links for images, ensuring limited time access and enhanced security.
+
+**Image Browsing:** Provides users with an intuitive interface to easily navigate and browse available images, including their generated thumbnails, on the platform.
+
+**Automated Tasks via Celery:** Employs Celery to run background processes that handle tasks such as thumbnail generation, obsolete thumbnail removal, and expired link deletion.
 
 ## Setup and Running
 
@@ -27,6 +28,7 @@ Run the database migrations in another terminal window with:
 
 ```bash
 docker exec -it imageapi-web-1 python manage.py migrate
+docker exec -it imageapi-web-1 python manage.py createsuperuser
 ```
 
 ### Loading Fixtures
@@ -40,12 +42,13 @@ docker exec -it imageapi-web-1 python manage.py loaddata /fixtures/userlevel_fix
 
 ```
 
-## API Documentation
-Image Upload: POST /upload/
+## API Endpoints
+Image Upload: Use the POST /upload/ endpoint to add images.
 
-Generate Expiring Link: POST /create-expiring-link/
+Generate Expiring Link: Generate time-limited access links with POST /create-expiring-link/.
 
-Browse Available Images: GET /images/
+Browse Available Images: Navigate through available images via GET /images/.
+
 
 
 ## Celery Tasks Overview
@@ -55,7 +58,7 @@ Within our application, we use Celery for asynchronous task processing. Here's a
 ```
 generate_and_store_thumbnails()
 ```
-Description: Generates thumbnails for a given image based on the user level and stores them in the database. Returns a dictionary of links to the generated thumbnails. It also updates the 'date_of_used' for each thumbnail.
+Description: This function is responsible for creating thumbnails based on user levels. After generation, these thumbnails are stored in the database, and a dictionary containing links to them is returned. Simultaneously, the 'date_of_used' attribute for each thumbnail is updated to keep track of its most recent usage.
 
 ```
 remove_old_thumbnails()
