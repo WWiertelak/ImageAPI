@@ -10,6 +10,6 @@ django-grappelli==3.0.3
 SQLAlchemy==2.0.1
 PyMySQL==1.0.2
 djangoql==0.17.1
-Pillow==8.3.1
+Pillow==10.0.1
 ipython==7.13.0
 django_celery_results==2.0.0
